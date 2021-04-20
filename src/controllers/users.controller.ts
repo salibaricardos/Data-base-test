@@ -15,7 +15,7 @@ class UsersController {
   };
 
   public getUserById = async (
-    req: Request, 
+    req: Request,
     res: Response,
     next: NextFunction
   ) => {

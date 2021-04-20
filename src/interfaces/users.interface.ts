@@ -1,10 +1,17 @@
 export interface User {
-  _id: string;
-  name: string;
+  _id: {
+    $oid: string;
+  };
+  firstName: string;
   lastName: string;
-  age: number;
+  phone: string;
   email: string;
-  phoneNumber: number;
-  creatingDate: string;
-  updatingDate: string;
+  password: string;
+  address: {
+    city: string;
+    street: string;
+    building: string;
+    floor: string;
+    extrainfo: string;
+  };
 }

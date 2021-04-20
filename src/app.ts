@@ -63,21 +63,28 @@ class App {
   }
 
   private connectToDatabase() {
-    const { MONGO_HOST, MONGO_PORT, MONGO_DATABASE } = process.env;
-    const options = {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    };
+    //   const { MONGO_HOST, MONGO_PORT, MONGO_DATABASE } = process.env;
+    //   const options = {
+    //     useCreateIndex: true,
+    //     useNewUrlParser: true,
+    //     useUnifiedTopology: true,
+    //     useFindAndModify: false,
+    //   };
 
     mongoose
-      .connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}`, {
-        ...options,
+      .connect(process.env.DATABASE, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
       })
-      .catch((error) => {
-        console.error("[ERROR]", error);
-      });
+      .then(() => console.log("DB Connected"))
+      .catch((err) => console.log("DB error", err));
+    // .connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}`, {
+    //   ...options,
+    // })
+    // .catch((error) => {
+    //   console.error("[ERROR]", error);
+    // });
   }
 }
 
